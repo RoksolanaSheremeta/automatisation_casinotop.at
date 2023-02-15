@@ -63,4 +63,5 @@ describe('Contact Page',async() => {
         await expect(browser).toHaveUrlContaining("uber-uns")
         await expect(browser).toHaveTitle("CasinoTop - Portal für alle österreichischen Casino Spieler")
     });
+    
 });
