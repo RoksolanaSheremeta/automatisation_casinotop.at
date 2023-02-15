@@ -20,10 +20,17 @@ class LoginPage {
     {
         return $(".wpcf7-response-output")
     }
-    async Login (userName, password) 
+
+    get message () 
+    {
+        return $("textarea[name='your-message']")
+    }
+
+    async Login (userName, password, message) 
     {
         await this.userName.setValue(userName)
-        await this.userName.setValue(password)
+        await this.password.setValue(password)
+        await this.message.setValue(message)
         await this.btnSend.click()
     }
 }
