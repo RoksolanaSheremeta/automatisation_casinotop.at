@@ -1,16 +1,16 @@
-import LoginPage from "../pageobjects/LoginPage"
+//import LoginPage from "../pageobjects/LoginPage"
 
 const expectchai = require('chai').expect
-//const LoginPage = require('../pageobjects/LoginPage')
+const LoginPage = require('../pageobjects/LoginPage')
 const fs = require('fs')
 let credentials = JSON.parse(fs.readFileSync('test/testData/LoginPage.json'))
 
 
-describe('Contact Page',async() => {
-    credentials.forEach(({userName, password}) => {
+describe('Contact Page', async() => {
+    credentials.forEach(({userName, password, message}) => {
         it('Test 6: Check Subscribe block when put fail data',  async () => {
             await browser.url('/uber-uns/')
-            await LoginPage.Login(userName, password)
+            await LoginPage.Login(userName, password, message)
             await LoginPage.btnSend.click()
             await browser.pause(3000)
             await console.log (await LoginPage.response.getText())
@@ -32,17 +32,12 @@ describe('Contact Page',async() => {
         await expect(linkcanonical).toHaveLink(`${baseUrl}uber-uns/`)
     });
 
-    xit('Test 6: Check Subscribe block when put fail data',  async () => {
-        await LoginPage.Login("Test name for autotest", "automationtest@gmail.com")
+    it('Test 6: Check Subscribe block when put fail data',  async () => {
+        await browser.url('/uber-uns/')
+        await LoginPage.Login("Test name for autotest", "automationtest@gmail.com", "My automation message")
         await LoginPage.btnSend.click()
         await browser.pause(3000)
         await console.log (await LoginPage.response.getText())
-        //await console.log (await $(".wpcf7-response-output").getText())
-        // await browser.waitUntil(async ()=>await $("select[name='menu-364']").getAttribute("value" === 'Send'),
-        // {
-        //     timeout: 5000,
-        //     timeoutMsg: "The field is required."
-        // })
     });
 
     it('Test 7: Check Subscribe block when put succses data',  async () => {
