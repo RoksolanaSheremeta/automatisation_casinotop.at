@@ -1,7 +1,7 @@
-//import LoginPage from "../pageobjects/LoginPage"
+import LoginPage from "../pageobjects/LoginPage"
 
 const expectchai = require('chai').expect
-const LoginPage = require('../pageobjects/LoginPage')
+//const LoginPage = require('../pageobjects/LoginPage')
 const fs = require('fs')
 let credentials = JSON.parse(fs.readFileSync('test/testData/LoginPage.json'))
 
