@@ -19,9 +19,9 @@ class HeaderSection {
     //   return $('header button');
     // }
   
-    // get menuItems () {
-    //   return $$('ul[class*="menu-items"]>li');
-    // }
+    get menuItems () {
+      return $$('ul[class*="main-menu"]>li');
+    }
   
     // get menuBlock () {
     //   return $('.js-main-menu');
