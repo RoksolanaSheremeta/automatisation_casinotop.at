@@ -7,7 +7,7 @@ exports.config = {
     ],
 
     exclude: [
-        'test/specs/example.e2e.js'
+        //'test/specs/example.e2e.js'
     ],
 
     windowSize: {
