@@ -1,0 +1,10 @@
+[
+    {
+        "userName": "Roksolana", 
+        "password": "automationtest@gmail.com"
+    },
+    {
+        "userName": "Test name for autotest", 
+        "password": "automationtest"
+    }
+]
