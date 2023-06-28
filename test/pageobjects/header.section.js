@@ -1,31 +1,31 @@
 class HeaderSection {
-    get logoIcon () {
-      return $('div.space-header-logo.box-20.left.relative > div > a > img');
-    }
-  
-    get logoIconClickable () {
-      return $('div.space-header-logo.box-20.left.relative > div > a');
-    }
-  
-    // get header () {
-    //   return $('header');
-    // }
-  
-    // get langButton () {
-    //   return $$('li[class*="menu-item-lang"]');
-    // }
-  
-    // get menuHamburger () {
-    //   return $('header button');
-    // }
-  
-    get menuItems () {
-      return $$('ul[class*="main-menu"]>li');
-    }
-  
-    // get menuBlock () {
-    //   return $('.js-main-menu');
-    // }
+  get logoIcon () {
+    return $('header>div>img');
+  }
+
+  get logoIconClickable () {
+    return $('header>div>a>img');
+  }
+
+  get header () {
+    return $('header');
+  }
+
+  get langButton () {
+    return $$('ul[class*="wpml-menu"]');
+  }
+
+  get menuHamburger () {
+    return $('header button');
+  }
+
+  get menuItems () {
+    return $$('ul[class*="header__menu"]>li');
+  }
+
+  get menuBlock () {
+    return $('#menu-header');
+  }
 }
-  
+
 export default new HeaderSection();

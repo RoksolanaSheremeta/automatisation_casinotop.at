@@ -2,12 +2,13 @@
 
 export default {
   urls: [
-    'https://qa.casino-kit-prod.site/',
-    //'https://casino-kit-prod.site/',
-    //'https://casinofiables.com/',
-    //'https://playsafecz.com/',
-    //'https://polskiekasynaonline.net/',
-    //'https://casinotop.at/',
+    // 'https://qa.casino-kit-prod.site/',
+    'https://njcasimile.com/',
+    // 'https://casino-kit-prod.site/',
+    // 'https://casinofiables.com/',
+    // 'https://playsafecz.com/',
+    // 'https://polskiekasynaonline.net/',
+    // 'https://casinotop.at/',
   ],
   endpoints: {
     getParameterForAnticloneTest: '?gbt=wo458yghhy7iw74it66u3t7ewyh8ds6tg',

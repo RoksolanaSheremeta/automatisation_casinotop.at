@@ -1,90 +1,100 @@
+import testData from '../helpers/test-data.js';
 import { checkThatImageIsNotBroken } from '../models/base.methods.js';
-import HeaderSection from '../pageobjects/header.section'
+import HeaderSection from '../pageobjects/header.section.js';
+import BaseSelectors from '../pageobjects/base.selectors';
+import {
+  loginToAdmin,
+  logoutFromAdmin 
+} from '../models/login.methods';
+//import { checkPluginActivation } from '../models/crossdomain.methods';
+//import { openSubmenuTab } from '../models/admin.methods';
+//import AdminDashboard from '../pageobjects/admin-dashboard.selectors.js';
 
 describe('Header tests', () => {
-    /* global baseUrl */
+  /* global baseUrl */
+  let skipTests = false;
 
-    beforeEach('Pre-conditions', () => {
-        browser.url(baseUrl);
-    });
+  // before('Pre-conditions', async () => {
+  //   await loginToAdmin();
+  //   const active = await checkPluginActivation(AdminDashboard.plugins.pluginRow('crossdomain-polylang'));
+  //   if (active === false) {
+  //     skipTests = true;
+  //     console.log('This test is skipped because plugin is not activated');
+  //   } else {
+  //     await openSubmenuTab(AdminDashboard.leftMenu.settingsTabInLeftMenu(), testData.plugins.multilangSettingsHref);
+  //     await expect(AdminDashboard.multilangSettings.showLangInHeaderCheckbox()).toBeExisting();
+  //     if (await AdminDashboard.multilangSettings.showLangInHeaderCheckbox().isSelected() === false) {
+  //       skipTests = true;
+  //       console.log('This test is skipped because "Show select languages in header menu" checkbox is not checked');
+  //     }
+  //   }
+  //   await logoutFromAdmin();
+  // });
 
-    it('Test 1: Check to Have Title', async() => {
-        console.log(await browser.getTitle());
-        await expect(browser).toHaveTitleContaining('Online Casino Österreich 🛡️ Die besten Casinos im Test 2023');
-        await $("link[rel='canonical']");
-    });
+  beforeEach('Pre-conditions 2', async () => {
+    await browser.url(baseUrl);
+    if (await HeaderSection.menuBlock.isExisting() === false) {
+      await browser.url(`https://${testData.promptCredentials[0]}:${testData.promptCredentials[1]}@${baseUrl.slice(8, -1)}`);
+    }
+  });
 
-    it('Test 2: Canonical', async () => {
-        const canonical = await browser.$(`link[rel='canonical']`);
-        await expect(canonical).toBePresent();
-        const linkcanonical = await $(`link[rel='canonical']`);
-        await expect(linkcanonical).toHaveLink('https://casinotop.at/');
-    });
+  it('Check that logo is present in header, the width and height is more than 0px and it is not clickable', async () => {
+    await expect(HeaderSection.logoIcon).toBeDisplayed();
+    const srcAttr = await HeaderSection.logoIcon.getAttribute(testData.attributes.src);
+    expect(srcAttr).not.toBe(null || '');
+    checkThatImageIsNotBroken(HeaderSection.logoIcon);
+    await expect(HeaderSection.logoIconClickable).not.toBeExisting();  
+  });
 
-    it('Test 3: Check that logo is present in header, the width and height is more than 0px and it is clickable', async () => {
-        await expect(HeaderSection.logoIcon).toBeDisplayed();
-        const srcAttr = await HeaderSection.logoIcon.getAttribute('src');
-        expect(srcAttr).not.toBe(null || '');
-        checkThatImageIsNotBroken(HeaderSection.logoIcon);
-        await expect(HeaderSection.logoIconClickable).toBeExisting();
-    });
-
-    it('Test 4: Make sure that the logo is clickable on other pages', async () => {
-        await HeaderSection.menuItems[1].moveTo();
-        await HeaderSection.menuItems[1].$('a').click();
-        await expect(HeaderSection.logoIcon).toBeExisting();
-        await HeaderSection.logoIconClickable.click();
-        await expect(browser).toHaveUrl(baseUrl);
-    });
-
-    it('Test 5: Logo redirection', async () => {
-        await browser.$("a[title='CasinoTop AT']").click();
-        const logoredirectionUrlExp = await expect(browser);
-        await logoredirectionUrlExp.toHaveUrl("https://casinotop.at/");
-        await browser.saveScreenshot("screenshot.png");
-    });
-
-    it('Test 6: Check header menu', async () => {
-        await $("#menu-item-8270").scrollIntoView();
-        await $("#menu-item-8270").moveTo();
-        await $("=Echtgeld Casinos").click();
-        await expect(browser).toHaveUrlContaining("echtgeld-casinos");
-        await $("#menu-item-4935").moveTo();
-        await $("=€5 Einzahlen").click();
-        await expect(browser).toHaveUrlContaining("5-euro-casino");
-        await $("#menu-item-7601").moveTo();
-        await $("=Sofortuberweisung").click();
-        await expect(browser).toHaveUrlContaining("zahlungsmethoden/sofortuberweisung-casinos/");
-        await $("#menu-item-11761").moveTo();
-        await $("=N1 Casino").click();
-        await expect(browser).toHaveUrlContaining("casino-test/n1-casino");
-    });
-
-    it('Test 7: Check that the lang button is present', async () => {
-        const LangButton = await browser.$("#menu-item-wpml-ls-2-de");
-        await expect(LangButton).toBePresent();
-    });
-
-    it('Test 8: Check alt and src attributes in the lang element', async () => {
-        const altArrt = await browser.$("#menu-item-wpml-ls-2-de");
-        const srcAttr = await browser.$("#menu-item-wpml-ls-2-de");
-        expect(altArrt).not.toBe(null || '');
-        expect(srcAttr).not.toBe(null || '');
-    });
-
-    it('Test 9: Check menu lang and text', async () => {
-        await $("#menu-item-wpml-ls-2-de").scrollIntoView();
-        await $("#menu-item-wpml-ls-2-de").moveTo();
-        await $("#menu-item-wpml-ls-2-de_en-nz").click();
-        console.log(await $("h1").getText());
-    });
-
-    xit('Test 10: Check table', async () => {
-        //await browser.url("https://casinotop.at/")
-        //await browser.setWindowSize(1552, 840)
-        await $("//figure[2]//table[1]//thead[1]//tr[1]//th[1]").getText();
-        const veggieLocators = await $$("figure:nth-child(19) > table > tbody:nth-child(3) > tr> td:nth-child(1)");
-        await veggieLocators.map(veggie=> veggie.getText());
-    });
-});
+  it('Make sure that the logo is clickable on other pages except the main page', async () => {
+    await HeaderSection.menuItems[1].moveTo();
+    await HeaderSection.menuItems[1].$('a').click();
+    await expect(HeaderSection.logoIcon).not.toBeExisting();
+    await HeaderSection.logoIconClickable.click();
+    await expect(browser).toHaveUrl(baseUrl);
+  });
+    
+  it('Check that the lang button is present', async () => {
+    if (skipTests) {
+      it.skip('skipping test', () => {});
+    } else {
+      await expect(HeaderSection.langButton[0]).toBeDisplayed();
+    }
+  });
   
+  it('Check alt and src attributes in the lang element', async () => {
+    if (skipTests) {
+      it.skip('skipping test', () => {});
+    } else {
+      const altArrt = await HeaderSection.langButton[0].getAttribute(testData.attributes.alt);
+      const srcAttr = await HeaderSection.langButton[0].getAttribute(testData.attributes.src);
+      expect(altArrt).not.toBe(null || '');
+      expect(srcAttr).not.toBe(null || '');
+    }
+  });
+
+  it('Check that items in the main menu are clickable and are disabled on the redirected page', async () => {
+    if (await HeaderSection.menuHamburger.isDisplayed() === true) {
+      await HeaderSection.menuHamburger.click();
+    }
+    await expect(HeaderSection.menuItems).toBeDisplayed();
+    const linkAfterClick = await HeaderSection.menuItems[1].$('a').getAttribute(testData.attributes.href);
+    await HeaderSection.menuItems[1].moveTo();
+    await HeaderSection.menuItems[1].$('a').click();
+    await expect(browser).toHaveUrlContaining(linkAfterClick);
+    await expect(HeaderSection.menuItems[1].$(BaseSelectors.spanSelector)).toHaveElementClassContaining(testData.attributeValues.emptyLink);
+  });
+
+  it('Make sure that the main menu block doesn`t go out the header layout', async () => {
+    browser.setWindowSize(1440, 900);
+    const headerHeight = await HeaderSection.header.getSize(testData.imageParams.height);
+    const menuHeight = await HeaderSection.menuBlock.getSize(testData.imageParams.height);
+    expect(menuHeight).not.toBeGreaterThan(headerHeight);
+  });
+
+  it('Check that header height is 66 when the window size is 1201', async () => {
+    browser.setWindowSize(379, 1201);
+    const headerHeight = await HeaderSection.header.getSize(testData.imageParams.height);
+    expect(headerHeight).toEqual(66);
+  });
+});

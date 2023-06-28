@@ -1,61 +1,57 @@
-describe('Footer Section',async() => {
-    beforeEach( async() => {
-        await browser.url('https://casinotop.at/')
-        await browser.setWindowSize(1552, 840)
-    });
+import testData from '../helpers/test-data.js';
+import { waitForElement } from '../models/base.methods.js';
+import FooterSection from '../pageobjects/footer.section.js';
+/* global baseUrl */
 
-    it('Test 1: Footer column TOP SEITEN and title', async () => {
-        await $(".footer_new-list.relative").scrollIntoView()
-        console.log(await $("div.footer_new-list.relative > div:nth-child(1) > span").getText())
-        await expect($("div.footer_new-list.relative > div:nth-child(1) > span")).toHaveText("TOP SEITEN")
-        await browser.$("#menu-item-14166").click()
-        console.log(await $("h1").getText())
-        await expect($("h1")).toHaveTextContaining("Online Casino schnelle Auszahlung Österreich")
-    });
+describe('Footer tests', () => {
+  beforeEach('Pre-conditions', async () => {
+    await browser.url(baseUrl);
+    if (await FooterSection.footer.isExisting() === false) {
+      await browser.url(`https://${testData.promptCredentials[0]}:${testData.promptCredentials[1]}@${baseUrl.slice(8, -1)}`);
+    }
+  });
 
-    it('Test 2: Footer column CASINO SPIELE and title', async () => {
-        await $(".footer_new-list.relative").scrollIntoView()
-        console.log(await $("div.footer_new-list.relative > div:nth-child(2) > span").getText())
-        await expect($("div.footer_new-list.relative > div:nth-child(2) > span")).toHaveText("CASINO SPIELE")
-        await browser.$("#menu-item-14170").click()
-        console.log(await $("h1").getText())
-        await expect($("h1")).toHaveTextContaining("Online Casino Merkur")
-    });
+  it('Check that the footer is present and displayed on the page', async () => {
+    await expect(FooterSection.footer).toBeDisplayed();
+  });
 
-    it('Test 3: Footer column ÜBER UNS and title', async () => {
-        await $(".footer_new-list.relative").scrollIntoView()
-        console.log(await $("div.footer_new-list.relative > div:nth-child(4) > span").getText())
-        await expect($("div.footer_new-list.relative > div:nth-child(4) > span")).toHaveText("ÜBER UNS")
-        await browser.$("#menu-item-13244").click()
-        console.log(await $("h1").getText())
-        await expect($("h1")).toHaveTextContaining("Über uns")
-    });
+  it('Make sure that blocks with menus are present and have titles', async () => {
+    await expect(FooterSection.menuSections).toBeExisting();
+    await FooterSection.menuSections[0].scrollIntoView();
+    if (await FooterSection.sectionsTitles.length !== 0 ||
+      await FooterSection.sectionsTitles.length !== undefined) {
+      await expect(FooterSection.sectionsTitles).toBeDisplayed();
+    }
+    await expect(FooterSection.menuItems).toHaveAttribute(testData.attributes.href);
+  });
 
-    it('Test 4: Check alt and src attributes in the lang element', async () => {
-        const altArrt = await browser.$("(//ul[@class='footer-nav'])[3]")
-        const srcAttr = await browser.$("(//ul[@class='footer-nav'])[3]")
-        expect(altArrt).not.toBe(null || '')
-        expect(srcAttr).not.toBe(null || '')
-    });
+  it('Make sure that copyright data is displayed in footer', async () => {
+    let copyrightElem;
+    await expect(FooterSection.footer).toBeDisplayed();
+    await FooterSection.footer.scrollIntoView({block: 'center'});
+    if (await FooterSection.copyrightText[1].isExisting === true) {
+      copyrightElem = await FooterSection.copyrightText[1];
+      await browser.fullscreenWindow();
+      await expect(copyrightElem).toBeDisplayed();
+      await expect(copyrightElem).toHaveTextContaining(testData.copyrightText + new Date().getFullYear());  
+    }
+  });
 
-    it('Test 5: Check menu lang and text', async () => {
-        await $("(//ul[@class='footer-nav'])[3]").scrollIntoView()
-        await $("#menu-item-wpml-ls-599-de_en-nz").click()
-        console.log(await $("h1").getText())
-        await expect(browser).toHaveUrlContaining("nzcasimile")
-    });
+  it('Make sure that all images in the footer are displayed', async () => {
+    await waitForElement(FooterSection.footer);
+    await FooterSection.footer.scrollIntoView({block: 'center'});
+    if (await FooterSection.icons.isExisting === false) {
+      console.log('There are no images in footer');
+    } else {
+      await expect(FooterSection.icons).toBeExisting();
 
-    it('Test 6: Check Copyright', async () => {
-        await $(".footer_new-copy.relative").scrollIntoView()
-        console.log(await $(".footer_new-copy.relative").getText())
-        await expect($(".footer_new-copy.relative")).toHaveTextContaining("© Copyright 2023 – Casinotop.at")
-    });
+      await FooterSection.icons.forEach(async (image) => {
+        const height = await image.getSize(testData.imageParams.height);
+        const srcArrt = await image.getAttribute(testData.attributes.src);
 
-    it('Test 7: Check footer logos and title', async () => {
-        await $(".space-footer-bottom").scrollIntoView()
-        await $("a[href='https://www.gpwa.org/']").click()
-        //await expect(browser).toHaveUrlContaining("gpwa")
-        //console.log(await browser.getTitle())
-        await browser.closeWindow()
-    });
+        expect(height).toBeGreaterThan(0);
+        await expect(srcArrt).not.toBe(null || '');
+      });
+    }
+  });
 });

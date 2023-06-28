@@ -8,7 +8,7 @@ class FooterSection {
   }
 
   get sectionsTitles () {
-    return $$('footer>div>div>div>span');
+    return $$('footer>div>div>div>div>span');
   }
 
   get menuItems () {
