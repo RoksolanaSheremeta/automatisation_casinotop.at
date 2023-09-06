@@ -12,7 +12,7 @@
         "@wdio/selenium-standalone-service": "^7.31.1",
         "@wdio/spec-reporter": "^7.25.1",
         "chai-webdriverio": "^1.0.0",
-        "chromedriver": "^113.0.0",
+        "chromedriver": "^116.0.0",
         "eslint": "^8.25.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-config-standard": "^17.0.0",
@@ -40,18 +40,5 @@
         "node-fetch": "^2.6.11",
         "url-parse": "^1.5.10",
         "webdriver": "^8.0.2"
-    },
-    "scripts": {
-        "test": "npx wdio run ./wdio.conf.js --spec",
-        "healthcheck": "npx wdio run ./wdio.conf.js --spec e2e/integration-tests/healthcheck_tests/*.js",
-        "cloaking-polylang-crossdomain": "npx wdio run ./wdio.conf.js --spec e2e/integration-tests/Cloaking+Polylang+Crossdomain_tests/*.js",
-        "casino-kit-crossdomain": "npx wdio run ./wdio.conf.js --spec e2e/integration-tests/crossdomain-tests/casino-kit-ONLY/*.js",
-        "microdata": "npx wdio run ./wdio.conf.js --spec e2e/integration-tests/microdata_tests/*.js",
-        "anticlone": "npx wdio run ./wdio.conf.js --spec e2e/integration-tests/anticlone-tests/*.js",
-        "cloaking": "npx wdio run ./wdio.conf.js --spec e2e/integration-tests/cloacking_tests/*.js",
-        "report-open": "allure open allure-report",
-        "report-generate": "allure generate allure-results --clean",
-        "pretest": "rimraf allure-results && rimraf allure-report",
-        "lint-code": "./node_modules/.bin/eslint --fix tests"
     }
 }

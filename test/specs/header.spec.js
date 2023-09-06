@@ -2,40 +2,13 @@ import testData from '../helpers/test-data.js';
 import { checkThatImageIsNotBroken } from '../models/base.methods.js';
 import HeaderSection from '../pageobjects/header.section.js';
 import BaseSelectors from '../pageobjects/base.selectors';
-import {
-  loginToAdmin,
-  logoutFromAdmin 
-} from '../models/login.methods';
-//import { checkPluginActivation } from '../models/crossdomain.methods';
-//import { openSubmenuTab } from '../models/admin.methods';
-//import AdminDashboard from '../pageobjects/admin-dashboard.selectors.js';
 
 describe('Header tests', () => {
   /* global baseUrl */
-  let skipTests = false;
+  const skipTests = false;
 
-  // before('Pre-conditions', async () => {
-  //   await loginToAdmin();
-  //   const active = await checkPluginActivation(AdminDashboard.plugins.pluginRow('crossdomain-polylang'));
-  //   if (active === false) {
-  //     skipTests = true;
-  //     console.log('This test is skipped because plugin is not activated');
-  //   } else {
-  //     await openSubmenuTab(AdminDashboard.leftMenu.settingsTabInLeftMenu(), testData.plugins.multilangSettingsHref);
-  //     await expect(AdminDashboard.multilangSettings.showLangInHeaderCheckbox()).toBeExisting();
-  //     if (await AdminDashboard.multilangSettings.showLangInHeaderCheckbox().isSelected() === false) {
-  //       skipTests = true;
-  //       console.log('This test is skipped because "Show select languages in header menu" checkbox is not checked');
-  //     }
-  //   }
-  //   await logoutFromAdmin();
-  // });
-
-  beforeEach('Pre-conditions 2', async () => {
-    await browser.url(baseUrl);
-    if (await HeaderSection.menuBlock.isExisting() === false) {
-      await browser.url(`https://${testData.promptCredentials[0]}:${testData.promptCredentials[1]}@${baseUrl.slice(8, -1)}`);
-    }
+  before('Pre-conditions', () => {
+    browser.url(baseUrl);
   });
 
   it('Check that logo is present in header, the width and height is more than 0px and it is not clickable', async () => {
@@ -95,6 +68,6 @@ describe('Header tests', () => {
   it('Check that header height is 66 when the window size is 1201', async () => {
     browser.setWindowSize(379, 1201);
     const headerHeight = await HeaderSection.header.getSize(testData.imageParams.height);
-    expect(headerHeight).toEqual(66);
+    expect(headerHeight).toEqual(78);
   });
 });

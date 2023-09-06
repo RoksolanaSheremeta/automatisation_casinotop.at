@@ -4,6 +4,7 @@ export default {
   urls: [
     // 'https://qa.casino-kit-prod.site/',
     'https://njcasimile.com/',
+    'https://casinotop.co.nz/',
     // 'https://casino-kit-prod.site/',
     // 'https://casinofiables.com/',
     // 'https://playsafecz.com/',

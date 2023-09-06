@@ -1,45 +1,28 @@
-import AdminDashboard from '../pageobjects/admin-dashboard.selectors';
-// import fetch from 'node-fetch';
-import testData from '../helpers/test-data';
-import { createNewUserAPI } from './API.methods';
-/* global baseUrl */
+import WebcheckPage from '../page-objects/webcheck.page';
+import AdminDashboard from '../page-objects/admin-dashboard.selectors';
 
-export const loginToAdmin = async (invalid = 'valid') => {
-  let user, password;
-  if (!baseUrl.includes('prokit.me')) {
-    const newUserCreds = await createNewUserAPI(baseUrl.slice(8, -1));
-    user = newUserCreds.user;
-    password = newUserCreds.password;
-  } else {
-    // need to set user creds here manually for dev environments
-    user = 'robert_davis';
-    password = 'c2e16ac7cbeaa1f8';
-  }
-  await browser.url(baseUrl + testData.endpoints.adminEndpoint);
-  if (await AdminDashboard.leftMenu.casinosTabInLeftMenu().isExisting() === false) {
-    if (await AdminDashboard.login.emailInput().isExisting() === false) {
-      if (baseUrl === 'https://qa.casino-kit-prod.site/') {
-        await browser.url(baseUrl + testData.endpoints.adminEndpoint);
-      } else {
-        await browser.url(`https://www-data:azimjArnyLy89=@${baseUrl.slice(8)}sec-adm/`);
-      }
-    }
-    await expect(AdminDashboard.login.emailInput()).toBeExisting();
-    await expect(AdminDashboard.login.emailInput()).toBeDisplayed();
-    await AdminDashboard.login.emailInput().setValue(user);
-    await expect(AdminDashboard.login.passwordInput()).toBeExisting();
-    await AdminDashboard.login.passwordInput().setValue(password);
-    await AdminDashboard.login.loginButton().click();
-    if (invalid === 'invalid') {
-      await expect(AdminDashboard.login.errorPopup()).toHaveText(testData.loginError);
-    } else {
-      await expect(AdminDashboard.leftMenu.casinosTabInLeftMenu()).toBeExisting();
-    }
+export const loginToWebcheck = async (username, password) => {
+  await browser.url('https://web-check.it-boosta.com/');
+  if (await WebcheckPage.navigationSearchInput.isExisting() === false) {
+    await expect(WebcheckPage.usernameInput).toBeExisting();
+    await WebcheckPage.usernameInput.setValue(username);
+    await WebcheckPage.passwordInput.setValue(password);
+    await WebcheckPage.loginButton.click();
+    await expect(WebcheckPage.navigationSearchInput).toBeExisting();  
   }
 };
 
-export const logoutFromAdmin = async () => {
-  await AdminDashboard.headerBarMenu.myAccountButtonInNavBar().moveTo();
-  await expect(AdminDashboard.headerBarMenu.logoutButtonInMyAccountOptions()).toBeDisplayed();
-  await AdminDashboard.headerBarMenu.logoutButtonInMyAccountOptions().click();
+export const loginToAdmin = async (baseUrl, username, password) => {
+  await browser.url(`${baseUrl}sec-adm/`);
+  if (await AdminDashboard.menuItemInNavBar('Casinos').isExisting() === false) {
+    if (await AdminDashboard.emailInput.isExisting() === false) {
+      await browser.url(`https://www-data:azimjArnyLy89=@${baseUrl.slice(8)}sec-adm/`);
+    }
+    await expect(AdminDashboard.emailInput).toBeExisting();
+    await AdminDashboard.emailInput.setValue(username);
+    await expect(AdminDashboard.passwordInput).toBeExisting();
+    await AdminDashboard.passwordInput.setValue(password);
+    await AdminDashboard.loginButton.click();
+    await expect(AdminDashboard.menuItemInNavBar('Casinos')).toBeExisting();
+  }
 };

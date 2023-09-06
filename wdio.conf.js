@@ -26,7 +26,7 @@ exports.config = {
     logLevel: 'info',
     bail: 0,
     
-    baseUrl: 'https://njcasimile.com/',
+    baseUrl: 'https://casinotop.co.nz/',
 
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
