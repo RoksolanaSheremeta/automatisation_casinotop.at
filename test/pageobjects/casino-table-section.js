@@ -8,7 +8,7 @@ class CasinoTable {
   }
 
   get logoIncart () {
-    return $$('div:not(.wcp-bonus-offers__list) > div[class*="js-referral"] div>img');
+    return $$('div[class="play-section__logo"]');
   }
 
   get logoInRow () {
@@ -16,7 +16,7 @@ class CasinoTable {
   }
 
   get cardOverlay () {
-    return $$('div:not(.wcp-bonus-offers__list) > div[class*="js-referral"]');
+    return $$('div:not(.wcp-bonus-offers__list) > div[class*="play-section__row play-section__row--body play-section__row-js"]');
   }
 
   get rowOverlay () {
@@ -24,11 +24,11 @@ class CasinoTable {
   }
 
   get CTAbutton () {
-    return $$('button[class*="js-referral"]');
+    return $$('button[class*="primary-button"]');
   }
 
   get showMoreButton () {
-    return $$('[class*="load-more-wrapper"]');
+    return $$('[class*="main-table__show-more"]');
   }
 }
 export default new CasinoTable();

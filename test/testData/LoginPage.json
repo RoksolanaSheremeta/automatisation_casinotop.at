@@ -1,12 +1,12 @@
 [
     {
         "userName": "Roksolana", 
-        "password": "automationtest@gmail.com",
+        "Subject": "automationtest@gmail.com",
         "message": "My automation message"
     },
     {
         "userName": "Test name for autotest", 
-        "password": "automationtest",
+        "Subject": "automationtest",
         "message": "My automation TEST message"
     }
 ]

@@ -81,3 +81,22 @@ export const checkImgAttributes = async (image) => {
   const srcSetAttr = await image.getAttribute('srcset');
   await expect(srcSetAttr).not.toBe(null || '');
 };
+
+export const getURLparams = async (elemToCheck, geoTest = 'yes') => {
+  const urlParams = [];
+  let geoParameter;
+  // eslint-disable-next-line
+  await browser.pause(1000);
+  const id = await elemToCheck.getAttribute('data-casino');
+  const location = baseUrl;
+  const element = await elemToCheck.getAttribute('data-element');
+  const elemPosition = await elemToCheck.getAttribute('data-position');
+  const casinoName = await elemToCheck.getAttribute(`data-${attributes[3]}`);
+  if (geoTest === 'yes') {
+    geoParameter = `geo=${await elemToCheck.getAttribute(`data-${attributes[4]}`)}`;
+    urlParams.push(id, location, element, elemPosition, casinoName, geoParameter.toLocaleLowerCase());
+  } else {
+    urlParams.push(id, location, element, elemPosition, casinoName);
+  }
+  return urlParams;
+};

@@ -14,5 +14,8 @@ class Base {
   get closeCookiePopupBtn () {
     return $('[class*="js-cookie-accept"]');
   }
+  get spanSelector () {
+    return 'span';
+  }
 }  
 export default new Base();

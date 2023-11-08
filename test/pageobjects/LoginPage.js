@@ -1,14 +1,14 @@
 class LoginPage {
   get userName () {
-    return $('input[name=\'your-name\']');
+    return $('input[name="your-name"]');
   }
 
-  get password () {
-    return $('input[name=\'your-email\']');
+  get Subject () {
+    return $('input[name="your-subject"]');
   }
 
   get btnSend () {
-    return $('input[value=\'Send\']');
+    return $('input[value="Submit"]');
   }
 
   get response () {
@@ -16,13 +16,13 @@ class LoginPage {
   }
 
   get message () {
-    return $('textarea[name=\'your-message\']');
+    return $('span[data-name="your-message"]');
   }
 
-  async Login (userName, password, message)
+  async Login (userName, Subject, message)
   {
     await this.userName.setValue(userName);
-    await this.password.setValue(password);
+    await this.password.setValue(Subject);
     await this.message.setValue(message);
     await this.btnSend.click();
   }

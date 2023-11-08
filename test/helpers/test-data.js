@@ -1,22 +1,10 @@
 /* eslint-disable camelcase */
 
 export default {
-  urls: [
-    // 'https://qa.casino-kit-prod.site/',
-    'https://njcasimile.com/',
-    'https://casinotop.co.nz/',
-    // 'https://casino-kit-prod.site/',
-    // 'https://casinofiables.com/',
-    // 'https://playsafecz.com/',
-    // 'https://polskiekasynaonline.net/',
-    // 'https://casinotop.at/',
-  ],
   endpoints: {
-    getParameterForAnticloneTest: '?gbt=wo458yghhy7iw74it66u3t7ewyh8ds6tg',
     invalidEndpoint: 'sdfgh/',
     sitemapEndpoint: 'age=sitemap-custom-polylang',
-    adminEndpoint: 'sec-adm/',
-    getParamForSelectors: '?automation=blwhp86uwsrv5wtxzlgqpfsecpmnechi',
+    adminEndpoint: 'wp-admin/',
   },
   secondBlogPage: 'blog/page/2/',
   blogPage: 'blog/',
@@ -68,18 +56,8 @@ export default {
     'Category',
   ],
   postTypes: ['post', 'page', 'casino', 'slots'],
-  taxonomyTypes: ['category', 'payments', 'software'],
   subpages: ['Categories', 'Payments', 'Softwares'],
-  plugins: {
-    cloakingAnticlone: 'cloaking-anti-clone',
-    multilangSettingsHref: 'sitemap-custom-polylang',
-  },
-  securityData: [
-    'search/{search_term_string}/',
-    '?author=1',
-    '/wp-json/wp/v2/users/',
-    '/author/natWEAbl',
-  ],
+
   invalidLogin: 'gghfghFGHJJ',
   invalidPass: '122122121212',
   loginError: 'Error: Invalid Username or Password',

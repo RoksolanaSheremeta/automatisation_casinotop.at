@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 exports.config = {
 
     runner: 'local',
@@ -7,7 +8,7 @@ exports.config = {
     ],
 
     exclude: [
-        //'test/specs/example.e2e.js'
+        // 'path/to/excluded/files'
     ],
 
     windowSize: {
@@ -37,27 +38,26 @@ exports.config = {
     mochaOpts: {
         ui: 'bdd',
         timeout: 60000
+        
     },
 
     // =====
     // Hooks
     // =====
-    before: function (config, capabilities, specs) {
+  before: function (config, capabilities, specs) {
     browser.deleteCookies();
     global.baseUrl = this.baseUrl;
     require('expect-webdriverio').setOptions({ wait: 5000 });
     const windowSize = browser.config.windowSize;
     browser.setWindowSize(windowSize.width, windowSize.height);
-    },
-    afterTest: function (
+  },
+  afterTest: function (
     test,
     context,
     { error, result, duration, passed, retries }
-    ) {
-        if (!passed) {
+  ) {
+    if (!passed) {
         // addAttachment('screenshot', browser.saveScreenshot(`./_results_/allure-raw/${new Date().getTime()}.png`));
-        }
-    },
-
-    
-}
+    }
+  },
+};
