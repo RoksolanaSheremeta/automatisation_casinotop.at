@@ -11,9 +11,9 @@ class Base {
     return $$('body img');
   }
 
-  get closeCookiePopupBtn () {
-    return $('[class*="js-cookie-accept"]');
-  }
+  // get closeCookiePopupBtn () {
+  //   return $('[class*="js-cookie-accept"]');
+  // }
   get spanSelector () {
     return 'span';
   }

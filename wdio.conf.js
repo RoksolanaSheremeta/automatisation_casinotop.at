@@ -57,7 +57,7 @@ exports.config = {
     { error, result, duration, passed, retries }
   ) {
     if (!passed) {
-        // addAttachment('screenshot', browser.saveScreenshot(`./_results_/allure-raw/${new Date().getTime()}.png`));
+      // addAttachment('screenshot', browser.saveScreenshot(`./_results_/allure-raw/${new Date().getTime()}.png`));
     }
   },
 };

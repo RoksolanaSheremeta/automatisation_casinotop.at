@@ -1,5 +1,5 @@
-import WebcheckPage from '../page-objects/webcheck.page';
-import AdminDashboard from '../page-objects/admin-dashboard.selectors';
+import WebcheckPage from '../pageobjects/webcheck.page';
+import AdminDashboard from '../pageobjects/admin-dashboard.selectors';
 
 export const loginToWebcheck = async (username, password) => {
   await browser.url('https://web-check.it-boosta.com/');
