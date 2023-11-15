@@ -1,5 +1,4 @@
 import { checkPaginationAfterChangingPage } from '../models/base.methods';
-// import Base from '../pageobjects/base.selectors';
 import paginationSection from '../pageobjects/pagination.section';
 import fetch from 'node-fetch';
 /* global baseUrl */
@@ -22,15 +21,22 @@ describe('Pagination on the Blog page', () => {
     if (siteLink.status === 200) {    
       await browser.url(`${baseUrl}blog/`);
       await expect(paginationSection.paginationPageNumber[0]).toHaveText('2');
-      // await Base.closeCookiePopupBtn.click();
       await paginationSection.paginationPageNumber[0].click();
       await checkPaginationAfterChangingPage('2');
-      await paginationSection.lastPageNumberArrow.click();
-      await checkPaginationAfterChangingPage('3');
+      if (await paginationSection.lastPageNumberArrow.isExisting()) {
+        await paginationSection.lastPageNumberArrow.click();
+        await checkPaginationAfterChangingPage('3');
+      } else {
+        await paginationSection.previousPageNumberArrow.click();
+        await expect(paginationSection.lastPageNumberArrow).toBeDisplayed();
+        await paginationSection.lastPageNumberArrow.click();
+        await checkPaginationAfterChangingPage('2');
+      }
       await paginationSection.previousPageNumberArrow.click();
-      await checkPaginationAfterChangingPage('2');
+      await checkPaginationAfterChangingPage('1');
     } else {
       console.log('The website has no Blog page');
     }
   });
 });
+

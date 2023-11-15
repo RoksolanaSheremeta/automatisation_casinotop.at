@@ -32,7 +32,11 @@ export const getPageLinksByAddingEndpointsToBasePage = (endpointsArray, addBaseU
 export const checkPaginationAfterChangingPage = async (page) => {
   await expect(paginationSection.currentPageNumber).toHaveText(page);
   await expect(paginationSection.currentPageNumber).not.toHaveAttr('href');
-  await expect(browser).toHaveUrlContaining(`page/${page}/`);
+  if (page === '1') {
+    await expect(browser).toHaveUrlContaining('/blog/');
+  } else {
+    await expect(browser).toHaveUrlContaining(`page/${page}/`);
+  }
 };
 
 const parseUrl = (url) => {

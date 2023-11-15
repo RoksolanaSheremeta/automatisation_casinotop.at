@@ -6,7 +6,6 @@ import fetch from 'node-fetch';
 
 describe('SEO data checks', () => {
   /* global baseUrl */
-
   it('Make sure that h1-h6 tags are present and contain text on all pages', async () => {
     const pagesToCheckArray = await getUrlsForSEOchecks();
     for (let index = 0; index < pagesToCheckArray.length; index++) {

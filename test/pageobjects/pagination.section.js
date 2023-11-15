@@ -1,6 +1,6 @@
 class Pagination {
   get paginationPageNumber () {
-    return $$('a[class="page-numbers"]');
+    return $$('a[class*="page-numbers"]');
   }
 
   get currentPageNumber () {

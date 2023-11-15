@@ -1,4 +1,4 @@
-/* eslint-disable indent */
+/* eslint-disable */
 exports.config = {
 
     runner: 'local',
@@ -21,7 +21,19 @@ exports.config = {
     capabilities: [{
         maxInstances: 5,
         browserName: 'chrome',
-        acceptInsecureCerts: true
+        acceptInsecureCerts: true,
+        'goog:chromeOptions': {
+          args: [
+              '--no-sandbox',
+              '--disable-infobars',
+              // '--headless',
+              '--disable-gpu',
+              'incognito',
+              'disable-extensions',
+              '--disable-dev-shm-usage'
+          ],
+      }
+
     }],
   
     logLevel: 'info',
