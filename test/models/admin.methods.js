@@ -1,6 +1,6 @@
 import AdminDashboard from '../pageobjects/admin-dashboard.selectors';
 import WebcheckPage from '../pageobjects/webcheck.page';
-import { loginToAdmin, loginToWebcheck } from './login.methods';
+import { loginToAdmin } from './login.methods';
 /* global baseUrl */
 
 export const getAdminCredsFromWebcheck  = async (domain) => {
@@ -54,9 +54,7 @@ export const getSubpagesUrls = async (pagesToCheckArray) => {
 
 export const getUrlsForSEOchecks = async (addBaseUrl = 'yes') => {
   let pagesToCheckArray = [];
-  await loginToWebcheck('autotest', 'autotest-password');
-  const adminCredentials = await getAdminCredsFromWebcheck(baseUrl.slice(8, -1));
-  await loginToAdmin(baseUrl, adminCredentials[0], adminCredentials[1]);
+  await loginToAdmin();
   pagesToCheckArray = await getPagesUrls(pagesToCheckArray);
   pagesToCheckArray = await getSubpagesUrls(pagesToCheckArray);
   if (addBaseUrl === 'yes') {
