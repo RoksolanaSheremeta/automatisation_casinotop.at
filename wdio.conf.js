@@ -36,7 +36,7 @@ exports.config = {
 
     }],
   
-    logLevel: 'info',
+    logLevel: 'warn',
     bail: 0,
     
     baseUrl: 'https://casinotop.co.nz/',
