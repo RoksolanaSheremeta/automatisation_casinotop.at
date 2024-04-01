@@ -18,7 +18,7 @@ class FrontPage {
     langButtonOptions: () => $$('li[class*="menu-item-lang"]'),
     imagesInLangOptions: () => $$('li[class*="menu-item-lang"] img'),
     menuHamburger: () => $('header button'),
-    menuItems: () => $$('ul[class*="header__menu"]>li'),
+    menuItems: () => $$('ul[class*="top-head__menu"]>li>a'),
     currentMenuItems: () => $$('li[class*="current"] li[class*="menu-item"] span'),
     menuBlock: () => $('.js-main-menu'),
   };
