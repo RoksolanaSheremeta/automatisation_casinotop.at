@@ -85,7 +85,7 @@ describe('Sitemap Test 200', () => {
   };
 
   const testcasinosUrls = [
-    'https://testcasinos.org/post-sitemap.xml',
+    // 'https://testcasinos.org/post-sitemap.xml',
     // 'https://testcasinos.org/page-sitemap.xml',
     // 'https://testcasinos.org/maranello-casino-sitemap.xml',
     // 'https://testcasinos.org/maranello-bonus-sitemap.xml',
@@ -97,7 +97,17 @@ describe('Sitemap Test 200', () => {
     // 'https://testcasinos.org/m-c-payment-methods-sitemap.xml',
     // 'https://testcasinos.org/m-c-soft-providers-sitemap.xml',
     // 'https://testcasinos.org/author-sitemap.xml',
-    'https://testcasinos.de/page-sitemap.xml',
+    // 'https://testcasinos.de/page-sitemap.xml',
+    // 'https://testcasinos.co.nz/post-sitemap.xml',
+    // 'https://testcasinos.co.nz/page-sitemap.xml',
+    // 'https://testcasinos.co.nz/maranello-casino-sitemap.xml',
+    // 'https://testcasinos.co.nz/maranello-bonus-sitemap.xml',
+    // 'https://testcasinos.co.nz/maranello-game-sitemap.xml',
+    // 'https://testcasinos.co.nz/m-c-license-sitemap.xml',
+    // 'https://testcasinos.co.nz/m-g-type-sitemap.xml'
+    'https://casinosfest.com/post-sitemap.xml',
+    'https://casinosfest.com/page-sitemap.xml',
+    'https://casinosfest.com/maranello-casino-sitemap.xml'
   ];
 
   for (const sitemapUrl of testcasinosUrls) {

@@ -12,7 +12,7 @@
         "@wdio/selenium-standalone-service": "^7.31.1",
         "@wdio/spec-reporter": "^7.25.1",
         "chai-webdriverio": "^1.0.0",
-        "chromedriver": "^123.0.1",
+        "chromedriver": "^125.0.0",
         "eslint": "^8.25.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-config-standard": "^17.0.0",
