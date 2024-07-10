@@ -35,7 +35,7 @@ describe('SEO data checks', () => {
       await browser.url(pagesToCheckArray[index]);  
       await expect(SEOTags.canonical).toExist();
       const hrefAttr = await SEOTags.canonical.getAttribute('href');
-      if (hrefAttr !== 'https://casinotop.co.nz/') {
+      if (hrefAttr !== 'https://testcasinos.org/') {
         await expect(hrefAttr).toEqual(`${pagesToCheckArray[index]}/`);
       }
     }

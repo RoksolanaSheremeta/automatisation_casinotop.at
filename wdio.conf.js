@@ -39,7 +39,7 @@ exports.config = {
     logLevel: 'warn',
     bail: 0,
     
-    baseUrl: 'https://casinotop.co.nz/',
+    baseUrl: 'https://testcasinos.org/',
 
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,

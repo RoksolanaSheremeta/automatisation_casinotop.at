@@ -11,20 +11,16 @@ class HeaderSection {
     return $('header');
   }
 
-  get langButton () {
-    return $$('ul[class*="wpml-menu"]');
-  }
-
   get menuHamburger () {
     return $('header button');
   }
 
   get menuItems () {
-    return $$('ul[class*="header__menu"]>li');
+    return $$('ul[id*="menu-header"]>li');
   }
 
   get menuBlock () {
-    return $('#menu-header');
+    return $('ul[id="menu-header"]');
   }
 }
 

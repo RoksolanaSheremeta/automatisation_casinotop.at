@@ -5,6 +5,7 @@ import FooterSection from '../pageobjects/footer.section.js';
 
 
 describe('Footer tests', () => {
+  const skipTests = false;
   beforeEach('Pre-conditions', async () => {
     // eslint-disable-next-line no-undef
     await browser.url(baseUrl);
@@ -59,6 +60,24 @@ describe('Footer tests', () => {
         expect(height).toBeGreaterThan(0);
         expect(srcAttr !== null || srcAttr !== '').toBe(true);
       }
+    }
+  });
+  it('Check that the lang button is present', async () => {
+    if (skipTests) {
+      it.skip('skipping test', () => {});
+    } else {
+      await expect(FooterSection.langButton[0]).toBeDisplayed();
+    }
+  });
+
+  it('Check alt and src attributes in the lang element', async () => {
+    if (skipTests) {
+      it.skip('skipping test', () => {});
+    } else {
+      const altArrt = await FooterSection.langButton[0].getAttribute(testData.attributes.alt);
+      const srcAttr = await FooterSection.langButton[0].getAttribute(testData.attributes.src);
+      expect(altArrt).not.toBe(null || '');
+      expect(srcAttr).not.toBe(null || '');
     }
   });
 });

@@ -22,6 +22,9 @@ class FooterSection {
   get icons () {
     return $$('footer img:not(li>a>img)');
   }
+  get langButton () {
+    return $$('ul[class*="wpml-menu"]');
+  }
 }
 
 export default new FooterSection();

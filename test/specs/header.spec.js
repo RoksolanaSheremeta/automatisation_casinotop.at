@@ -6,8 +6,7 @@ import FrontPage from '../pageobjects/front-pages.selectors.js';
 
 describe('Header tests', () => {
   /* global baseUrl */
-  const skipTests = false;
-
+  
   before('Pre-conditions', async () => {
     await browser.url(baseUrl);
     if (await HeaderSection.menuBlock.isExisting() === false) {
@@ -29,25 +28,6 @@ describe('Header tests', () => {
     await expect(HeaderSection.logoIcon).not.toBeExisting();
     await HeaderSection.logoIconClickable.click();
     await expect(browser).toHaveUrl(baseUrl);
-  });
-    
-  it('Check that the lang button is present', async () => {
-    if (skipTests) {
-      it.skip('skipping test', () => {});
-    } else {
-      await expect(HeaderSection.langButton[0]).toBeDisplayed();
-    }
-  });
-  
-  it('Check alt and src attributes in the lang element', async () => {
-    if (skipTests) {
-      it.skip('skipping test', () => {});
-    } else {
-      const altArrt = await HeaderSection.langButton[0].getAttribute(testData.attributes.alt);
-      const srcAttr = await HeaderSection.langButton[0].getAttribute(testData.attributes.src);
-      expect(altArrt).not.toBe(null || '');
-      expect(srcAttr).not.toBe(null || '');
-    }
   });
 
   it('Check that items in the main menu are clickable and are disabled on the redirected page', async () => {
