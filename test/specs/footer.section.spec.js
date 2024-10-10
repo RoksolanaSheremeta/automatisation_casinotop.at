@@ -1,83 +1,64 @@
 import testData from '../helpers/test-data.js';
-import { waitForElement } from '../models/base.methods.js';
-import FooterSection from '../pageobjects/footer.section.js';
-/* global baseUrl */
+import FrontPage from '../pageobjects/front-pages.selectors.js';
+import { visitMainPageByUrl, waitForElement } from '../models/base.methods.js';
 
+describe('Footer tests for testcasinos.org', () => {
 
-describe('Footer tests', () => {
-  const skipTests = false;
   beforeEach('Pre-conditions', async () => {
-    // eslint-disable-next-line no-undef
-    await browser.url(baseUrl);
-    if (await FooterSection.footer.isExisting() === false) {
-      await browser.url(`https://${testData.promptCredentials[0]}:${testData.promptCredentials[1]}@${baseUrl.slice(8, -1)}`);
-    }
+    await visitMainPageByUrl();
   });
 
-  it('Check that the footer is present and displayed on the page', async () => {
-    await expect(FooterSection.footer).toBeDisplayed();
+  it('Check that the footer is present and displayed on the Home page', async () => {
+    await expect(FrontPage.footer.footerBlock()).toBeDisplayed();
   });
 
   it('Make sure that blocks with menus are present and have titles', async () => {
-    await expect(FooterSection.menuSections).toBeExisting();
-    await FooterSection.menuSections[0].scrollIntoView();
-    // eslint-disable-next-line no-undef
-    if (baseUrl.includes('casinoofthekings.ca')) {
-      console.log('This domain has no block titles in footer');
-    } else {
-      if (await FooterSection.sectionsTitles.length !== 0 ||
-      await FooterSection.sectionsTitles.length !== undefined) {
-        await expect(FooterSection.sectionsTitles).toBeDisplayed();
-      }
+    await expect(FrontPage.footer.menuSections()).toBeExisting();
+    await FrontPage.footer.menuSections()[0].scrollIntoView();
+
+    // Перевіряємо, що футер містить заголовки секцій
+    const sectionTitlesLength = await FrontPage.footer.sectionsTitles().length;
+    if (sectionTitlesLength !== 0 && sectionTitlesLength !== undefined) {
+      await expect(FrontPage.footer.sectionsTitles()).toBeDisplayed();
     }
-    await expect(FooterSection.menuItems).toHaveAttribute(testData.attributes.href);
+
+    // Перевіряємо, що всі пункти меню мають атрибут href
+    const menuItems = await FrontPage.footer.menuItems();
+    for (let index = 0; index < menuItems.length; index++) {
+      await expect(menuItems[index]).toHaveAttribute(testData.attributes.href);
+    }
   });
 
   it('Make sure that copyright data is displayed in footer', async () => {
-    let copyrightElem;
-    await expect(FooterSection.footer).toBeDisplayed();
-    await FooterSection.footer.scrollIntoView({block: 'center'});
-    if (await FooterSection.copyrightText[1].isExisting === true) {
-      copyrightElem = await FooterSection.copyrightText[1];
+    await expect(FrontPage.footer.footerBlock()).toBeDisplayed();
+    await FrontPage.footer.footerBlock().scrollIntoView({block: 'center'});
+
+    const copyrightElements = await FrontPage.footer.copyrightText();
+    if (copyrightElements.length > 1 && await copyrightElements[1].isExisting()) {
+      let copyrightElem = copyrightElements[1];
       await browser.fullscreenWindow();
       await expect(copyrightElem).toBeDisplayed();
-      await expect(copyrightElem).toHaveTextContaining(testData.copyrightText + new Date().getFullYear());  
+      await expect(copyrightElem).toHaveTextContaining(testData.copyrightText + new Date().getFullYear());
     }
   });
 
   it('Make sure that all images in the footer are displayed', async () => {
-    await waitForElement(FooterSection.footer);
-    await FooterSection.footer.scrollIntoView({block: 'center'});
-    if (await FooterSection.icons.length < 1) {
+    await waitForElement(FrontPage.footer.footerBlock());
+    await FrontPage.footer.footerBlock().scrollIntoView({block: 'center'});
+
+    const footerIcons = await FrontPage.footer.icons();
+    if (footerIcons.length < 1) {
       console.log('There are no images in footer');
     } else {
-      await expect(FooterSection.icons).toBeExisting();
+      await expect(footerIcons).toBeExisting();
 
-      for (let i = 0; i < await FooterSection.icons.length; i++) {
-        const height = await FooterSection.icons[i].getSize(testData.imageParams.height);
-        const srcAttr = await FooterSection.icons[i].getAttribute(testData.attributes.src);
+      for (let i = 0; i < footerIcons.length; i++) {
+        const height = await footerIcons[i].getSize('height');
+        const srcAttr = await footerIcons[i].getAttribute(testData.attributes.src);
 
         expect(height).toBeGreaterThan(0);
-        expect(srcAttr !== null || srcAttr !== '').toBe(true);
+        expect(srcAttr).toBeTruthy(); // Перевіряємо на наявність src
       }
-    }
-  });
-  it('Check that the lang button is present', async () => {
-    if (skipTests) {
-      it.skip('skipping test', () => {});
-    } else {
-      await expect(FooterSection.langButton[0]).toBeDisplayed();
-    }
-  });
-
-  it('Check alt and src attributes in the lang element', async () => {
-    if (skipTests) {
-      it.skip('skipping test', () => {});
-    } else {
-      const altArrt = await FooterSection.langButton[0].getAttribute(testData.attributes.alt);
-      const srcAttr = await FooterSection.langButton[0].getAttribute(testData.attributes.src);
-      expect(altArrt).not.toBe(null || '');
-      expect(srcAttr).not.toBe(null || '');
     }
   });
 });

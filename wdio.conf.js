@@ -1,6 +1,9 @@
+const url = process.env.VAR_SITE_TEST || 'develop-testcasinos-org.dev.prokit.me'
+
 /* eslint-disable */
 exports.config = {
-
+  
+  baseUrl: yargs.baseUrl || `https://${url}/`,
     runner: 'local',
     
     specs: [
@@ -38,8 +41,9 @@ exports.config = {
   
     logLevel: 'warn',
     bail: 0,
+    // baseUrl: yargs.baseUrl || "https://" + url + "/",
     
-    baseUrl: 'https://testcasinos.org/',
+    baseUrl: 'https://develop-testcasinos-org.dev.prokit.me/',
 
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,

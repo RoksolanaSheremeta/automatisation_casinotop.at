@@ -36,9 +36,9 @@
         "allowShortCircuit": 0,
         "allowTernary": 0,
         "no-unused-expressions": 0
-      },    
+      },
     "parserOptions": {
-            "ecmaVersion": "latest", 
+            "ecmaVersion": "latest",
             "sourceType": "module"
         },
         "env": {

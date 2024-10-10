@@ -1,29 +1,18 @@
 /* eslint-disable camelcase */
 
 export default {
-  urls: [
-    'https://qa.casino-kit-prod.site/',
-    'https://casino-kit-prod.site/',
-    'https://casinofiables.com/',
-    'https://playsafecz.com/',
-    'https://polskiekasynaonline.net/',
-  ],
   endpoints: {
     getParameterForAnticloneTest: '?gbt=wo458yghhy7iw74it66u3t7ewyh8ds6tg',
     invalidEndpoint: 'sdfgh/',
     sitemapEndpoint: 'age=sitemap-custom-polylang',
     adminEndpoint: 'sec-adm/',
     getParamForSelectors: '?automation=blwhp86uwsrv5wtxzlgqpfsecpmnechi',
+    paramForCheckingEvents: '?logvisibility=1',
+    styleCss: 'wp-content/themes/theme/style.css',
   },
   secondBlogPage: 'blog/page/2/',
   blogPage: 'blog/',
-  webcheckUrl: 'https://web-check.it-boosta.com/',
   webcheckAPI: 'https://web-check.it-boosta.com/web-check-api',
-  polylangUrl: 'https://www-data:azimjArnyLy89=@polylangkos.prokit.me/',
-  unicodeEditor: 'https://freetools.textmagic.com/unicode-detector',
-  checkingVersionUrl: 'https://www-data:azimjArnyLy89=@check-casino-kit-version.prokit.me/',
-  keitaroUrlTest: 'http://195.201.232.73/admin/?#!/dashboard/',
-  keitaroUrl: 'https://biitly.info/admin/',
   attributes: {
     href: 'href',
     hreflang: 'hreflang',
@@ -32,10 +21,6 @@ export default {
     src: 'src',
     content: 'content',
     srcSet: 'srcset',
-    dataPosition: 'data-wcp-ut-position',
-    dataID: 'data-wcp-ut-casino-id',
-    dataElement: 'data-wcp-ut-convert-element',
-    dataLayer: 'data-wcp-ut-data-layer',
     name: 'data-wcp-ut-casino-name',
     geo: 'data-wcp-ut-geo',
     selected: 'selected',
@@ -45,14 +30,6 @@ export default {
     lang: 'lang',
     style: 'style',
     placeholder: 'placeholder',
-  },
-  keitaroTestCreds: {
-    username: 'test-user',
-    password: 'sA#29T#8^0ZLZ7^G',
-  },
-  keitaroCreds: {
-    username: 'autotest-user',
-    password: `6<(B&\\@M<4FkfE}Q`, // eslint-disable-line
   },
   imageParams: {
     height: 'height',
@@ -68,7 +45,22 @@ export default {
     tableOfContent: 'Table of content',
     quantityOfItems: 'Quantity of items in constructor',
     ctaDataAttrValues: 'CTA data attributes values',
+    ctaDataAttrNames: 'CTA data attributes names',
+    header: 'Header',
+    redirectPage: 'Redirect Page',
+    footer: 'Footer',
+    casinoIsNotAvailablePopup: 'Casino is not available Pop-up',
     casinos: 'Casinos',
+    trackingScript: 'Tracking script',
+    providers: 'Providers',
+    slotsCategory: 'Slots category',
+    iframeOptions: 'Iframe options',
+    slotsInfoGroupTitles: 'Slots info group titles',
+    micromarkup: 'Micromarkup',
+    faq: 'FAQ',
+    constructorDefaultSettings: 'Constructor Default settings',
+    geoDependentCasinos: 'Geo Depended Casinos',
+    gtmScript: 'GTM Script insert',
   },
   pageTypes: [
     'Casinos',
@@ -119,5 +111,11 @@ export default {
     providers: 'providers',
     slots_category: 'slots_category',
     content: 'content',
-  },  
+  }, 
+  constructorBlocksData:{
+    faq:{
+      question: 'question We Have Tested 500+ Online & Offline Casinos Around The World',
+      answer: 'We Have Tested 500+ Online & Offline Casinos Around The World'
+    }
+  }
 };

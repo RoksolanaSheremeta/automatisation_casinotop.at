@@ -7,12 +7,14 @@ import FrontPage from '../pageobjects/front-pages.selectors.js';
 describe('Header tests', () => {
   /* global baseUrl */
   
-  before('Pre-conditions', async () => {
-    await browser.url(baseUrl);
+const baseUrl = 'https://testcasinos.org/';
+
+before('Pre-conditions', async () => { 
+    await browser.url(baseUrl); 
     if (await HeaderSection.menuBlock.isExisting() === false) {
-      await browser.url(`https://${testData.promptCredentials[0]}:${testData.promptCredentials[1]}@${baseUrl.slice(8, -1)}`);
+      await browser.url(`https://${testData.promptCredentials[0]}:${testData.promptCredentials[1]}@${baseUrl.slice(8)}`);
     }
-  });
+});
 
   it('Check that logo is present in header, the width and height is more than 0px and it is not clickable', async () => {
     await expect(HeaderSection.logoIcon).toBeDisplayed();

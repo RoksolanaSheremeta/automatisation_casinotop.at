@@ -4,16 +4,17 @@ class FooterSection {
   }
 
   get menuSections () {
-    return $$('footer ul');
+    return $$('site-footer__menu-block');
   }
 
   get sectionsTitles () {
     return $$('footer>div>div>div>div>span');
   }
 
-  get menuItems () {
-    return $$('footer ul>li>a');
-  }
+  get menuItems() {
+    return $$('div[class="site-footer__menu"] ul > li');
+}
+
 
   get copyrightText () {
     return $$('div*=Copyright');
@@ -23,7 +24,7 @@ class FooterSection {
     return $$('footer img:not(li>a>img)');
   }
   get langButton () {
-    return $$('ul[class*="wpml-menu"]');
+    return $$('.js-wpml-ls-item-toggle.wpml-ls-item-toggle');RR
   }
 }
 

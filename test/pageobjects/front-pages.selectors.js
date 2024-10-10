@@ -3,7 +3,7 @@ class FrontPage {
   footer = {
     footerBlock: () => $('body footer'),
     menuSections: () => $$('footer ul'),
-    sectionsTitles: () => $$('footer>div>div>div>span'),
+    sectionsTitles: () => $$('footer>div>div>div>div>div>span'),
     menuItems: () => $$('footer ul>li>a'),
     copyrightText: () => $$('div*=Copyright'),
     icons: () => $$('footer img:not(li>a>img):not([class*="menu-item"])'),
