@@ -2,6 +2,8 @@ import AdminDashboard from '../pageobjects/admin-dashboard.selectors';
 import testData from '../helpers/test-data';
 import { createNewUserAPI } from './API.methods';
 
+/* global baseUrl*/
+
 export const getUserLoginAndPassword = async () => {
   let username, password;
   if (!baseUrl.includes('prokit.me')) {
@@ -18,9 +20,9 @@ export const getUserLoginAndPassword = async () => {
 export const loginToAdmin = async (invalid = 'valid', url = baseUrl) => {
   const { username, password } = await getUserLoginAndPassword();
   await browser.url(url + testData.endpoints.adminEndpoint);
-  if (!await AdminDashboard.leftMenu.casinosTabInLeftMenu().isExisting()) {
+  if (!await AdminDashboard.leftMenu.pagesTabInLeftMenu().isExisting()) {
     if (!await AdminDashboard.login.emailInput().isExisting()) {
-      await browser.url(`https://www-data:azimjArnyLy89=@${url.slice(8)}sec-adm/`);
+      await browser.url(`https://www-data:azimjArnyLy89=@${url.slice(8)}wp-admin/`);
     }
     await expect(AdminDashboard.login.emailInput()).toBeExisting();
     await expect(AdminDashboard.login.emailInput()).toBeDisplayed();
@@ -30,20 +32,20 @@ export const loginToAdmin = async (invalid = 'valid', url = baseUrl) => {
     if (invalid === 'invalid') {
       await AdminDashboard.login.passwordInput().setValue('asdasdasdasd');
     }
-    await waitScrollAndClick(AdminDashboard.login.loginButton());
+    await AdminDashboard.login.loginButton().click();
     if (invalid === 'invalid') {
       await expect(AdminDashboard.login.errorPopup()).toHaveText(testData.loginError);
     } else {
-      if (! await AdminDashboard.leftMenu.casinosTabInLeftMenu().isExisting() && !baseUrl.includes('onlinecasinosbe.com')) {
+      if (! await AdminDashboard.leftMenu.pagesTabInLeftMenu().isExisting() && !baseUrl.includes('onlinecasinosbe.com')) {
         await expect(AdminDashboard.login.theEmailIsCorrectButton()).toBeExisting();
         await AdminDashboard.login.theEmailIsCorrectButton().click();
-        await expect(AdminDashboard.leftMenu.casinosTabInLeftMenu()).toBeExisting();
-      } else if (! await AdminDashboard.leftMenu.casinosTabInLeftMenu().isExisting() && baseUrl.includes('onlinecasinosbe.com')) {
+        await expect(AdminDashboard.leftMenu.pagesTabInLeftMenu()).toBeExisting();
+      } else if (! await AdminDashboard.leftMenu.pagesTabInLeftMenu().isExisting() && baseUrl.includes('onlinecasinosbe.com')) {
         await AdminDashboard.login.emailInput().setValue(username);
         await AdminDashboard.login.passwordInput().setValue(password);
         await waitScrollAndClick(AdminDashboard.login.loginButton());
       } else {
-        await expect(AdminDashboard.leftMenu.casinosTabInLeftMenu()).toBeExisting();
+        await expect(AdminDashboard.leftMenu.pagesTabInLeftMenu()).toBeExisting();
       }
     }
   }

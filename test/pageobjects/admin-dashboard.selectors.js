@@ -1,4 +1,27 @@
 class AdminDashboard {
+  login = {
+    emailInput: () => $('#user_login'),
+    passwordInput: () => $('#user_pass'),
+    loginButton: () => $('#wp-submit'),
+    errorPopup: () => $('#login_error'),
+    theEmailIsCorrectButton: () => $('#correct-admin-email'),
+  };
+
+  leftMenu = {
+    pagesTabInLeftMenu: () => $('#menu-pages'),
+  };
+
+  addNewPage = {
+    addNewButtoninPagesTab: () => $('.page-title-action'),
+  }
+
+  get successMessage() {
+    return $('div[class*="notice-success"]');
+  }
+
+  editPostsPage ={
+    postTitle: () => $('[name="post_title"]'),
+  };
   get emailInput () {
     return $('#user_login');
   }

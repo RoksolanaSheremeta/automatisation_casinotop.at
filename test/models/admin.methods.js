@@ -62,3 +62,19 @@ export const getUrlsForSEOchecks = async (addBaseUrl = 'yes') => {
   }
   return pagesToCheckArray;
 };
+
+export const updatePageAndCheckMessage = async (button = AdminDashboard.addNewPage.updateButton()) => {
+  await button.scrollIntoView();
+  await button.click();
+  await browser.waitUntil(async () => {
+    return await AdminDashboard.successMessage.isExisting();
+  }, {
+    timeout: 20000,
+    interval: 500,
+  });
+  const value = await AdminDashboard.successMessage.getText();
+  const includesUpdate = value.includes('pdated');
+  const includesPublished = value.includes('published');
+  const otherLanguage = value.includes('epubliceerd');
+  expect(includesUpdate || includesPublished || otherLanguage).toBeTruthy();
+};
