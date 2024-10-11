@@ -6,6 +6,10 @@ class AdminDashboard {
     errorPopup: () => $('#login_error'),
     theEmailIsCorrectButton: () => $('#correct-admin-email'),
   };
+  constructorBlocks = {
+    addBlockinButton: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButton: () => $('[class*="quick-inserter-results"] button[class*="faq"]:not([class*="yoast"])'),
+  };
 
   leftMenu = {
     pagesTabInLeftMenu: () => $('#menu-pages'),

@@ -17,6 +17,18 @@ describe('Faq', () => {
             await AdminDashboard.closeButtonPage.closeButtoninPages().click()
         }
         await AdminDashboard.editPostsPage.postTitle().setValue('Test page for maranello bloks');
+        //await updatePageAndCheckMessage();
+
+        await browser.keys('Enter');
+        await browser.keys('/section');
+        await browser.keys('Enter');
+        await AdminDashboard.constructorBlocks.addBlockinButton().click();
+        await browser.keys('faq');
+        await browser.pause(2000);
+        await AdminDashboard.constructorBlocks.blockinlistButton().scrollIntoView();
+        await AdminDashboard.constructorBlocks.blockinlistButton().moveTo();
+        await AdminDashboard.constructorBlocks.blockinlistButton().click();
+
         await updatePageAndCheckMessage();
     });
 }); 
