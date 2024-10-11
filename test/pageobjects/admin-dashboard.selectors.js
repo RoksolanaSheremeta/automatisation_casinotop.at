@@ -16,12 +16,24 @@ class AdminDashboard {
   }
 
   get successMessage() {
-    return $('div[class*="notice-success"]');
+    return $('div[aria-label="Dismiss this notice"]');
   }
 
-  editPostsPage ={
-    postTitle: () => $('[name="post_title"]'),
+  editPostsPage = {
+    postTitle: () => $('h1[aria-label="Add title"]'),
   };
+
+  closeButtonPage = {
+    closeButtoninPages: () => $('(//button[@aria-label="Close dialog"])')
+  }
+  updatePageAndCheckMessage = {
+    updateButton: () => $('.components-button.editor-post-publish-panel__toggle'),
+  }
+
+  get secondPublishButton () {
+    return $('.components-button.editor-post-publish-button.editor-post-publish-button__button.is-primary');
+  }
+
   get emailInput () {
     return $('#user_login');
   }

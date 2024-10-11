@@ -63,13 +63,18 @@ export const getUrlsForSEOchecks = async (addBaseUrl = 'yes') => {
   return pagesToCheckArray;
 };
 
-export const updatePageAndCheckMessage = async (button = AdminDashboard.addNewPage.updateButton()) => {
+export const updatePageAndCheckMessage = async (button = AdminDashboard.updatePageAndCheckMessage.updateButton()) => {
   await button.scrollIntoView();
   await button.click();
+  if (await AdminDashboard.secondPublishButton.isExisting()) {
+    await AdminDashboard.secondPublishButton.scrollIntoView();
+    await AdminDashboard.secondPublishButton.click(); // Клік на другу кнопку Publish
+  }
+
   await browser.waitUntil(async () => {
     return await AdminDashboard.successMessage.isExisting();
   }, {
-    timeout: 20000,
+    timeout: 30000,
     interval: 500,
   });
   const value = await AdminDashboard.successMessage.getText();
@@ -78,3 +83,4 @@ export const updatePageAndCheckMessage = async (button = AdminDashboard.addNewPa
   const otherLanguage = value.includes('epubliceerd');
   expect(includesUpdate || includesPublished || otherLanguage).toBeTruthy();
 };
+

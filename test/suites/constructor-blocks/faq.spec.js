@@ -12,12 +12,11 @@ describe('Faq', () => {
     it('should open the homepage', async () => {
         await AdminDashboard.leftMenu.pagesTabInLeftMenu().click();
         await AdminDashboard.addNewPage.addNewButtoninPagesTab().click();
-        //await AdminDashboard.addNewPage.closeButtoninPages().click();
-        await browser.pause(200000);
-        if (await AdminDashboard.closeButtoninPages().isExisting()) {
-            await AdminDashboard.closeButtoninPages().click()
+        await AdminDashboard.closeButtonPage.closeButtoninPages().click();
+        if (await AdminDashboard.closeButtonPage.closeButtoninPages().isExisting()) {
+            await AdminDashboard.closeButtonPage.closeButtoninPages().click()
         }
-        await AdminDashboard.editPostsPage.postTitle().setValue('Test page link');
+        await AdminDashboard.editPostsPage.postTitle().setValue('Test page for maranello bloks');
         await updatePageAndCheckMessage();
     });
 }); 
