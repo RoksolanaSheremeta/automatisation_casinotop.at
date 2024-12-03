@@ -12,8 +12,8 @@ export const getUserLoginAndPassword = async () => {
     password = newUserCreds.password;
   } else {
     // need to set user creds here manually for dev environments
-    username = process.env.VAR_USER_NAME || 'adtestcasinos';
-    password = process.env.VAR_USER_PASSWORD || 'AnUEVD3DbwbXiXX6U(XPP(Ux';
+    username = process.env.VAR_USER_NAME || 'maranello';
+    password = process.env.VAR_USER_PASSWORD || 'nbL4V95y6X';
   }
   return { username, password };
 };

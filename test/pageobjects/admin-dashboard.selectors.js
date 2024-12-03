@@ -8,7 +8,7 @@ class AdminDashboard {
   };
   constructorBlocks = {
     addBlockinButton: () => $("div[class='block-editor-block-list__layout']"),
-    blockinlistButton: () => $('[class*="quick-inserter-results"] button[class*="faq"]:not([class*="yoast"])'),
+    blockinlistButton: () => $('button[class*="faq"]:not([class*="yoast"])'),
   };
 
   leftMenu = {
@@ -27,9 +27,7 @@ class AdminDashboard {
     postTitle: () => $('h1[aria-label="Add title"]'),
   };
 
-  closeButtonPage = {
-    closeButtoninPages: () => $('(//button[@aria-label="Close dialog"])')
-  }
+ 
   updatePageAndCheckMessage = {
     updateButton: () => $('.components-button.editor-post-publish-panel__toggle'),
   }

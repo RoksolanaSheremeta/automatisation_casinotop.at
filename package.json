@@ -11,7 +11,7 @@
         "@wdio/mocha-framework": "^7.33.0",
         "@wdio/selenium-standalone-service": "^7.31.1",
         "@wdio/spec-reporter": "^7.33.0",
-        "chromedriver": "^129.0.0",
+        "chromedriver": "^131.0.1",
         "eslint": "^8.43.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-config-standard": "^17.0.0",
