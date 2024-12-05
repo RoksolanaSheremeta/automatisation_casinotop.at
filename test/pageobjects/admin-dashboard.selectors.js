@@ -21,6 +21,25 @@ class AdminDashboard {
     blockinlistButtonpagehero: () => $('button[class*="blocks-page-hero"]:not([class*="page-hero-with-anchor"])'),
   };
 
+  constructorBlockspageherowithanchor = {
+    addBlockinButtonpageherowithanchor: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonpageherowithanchor: () => $('button[class*="page-hero-with-anchor"]'),
+  };
+
+  constructorBlockstextwithlist = {
+    addBlockinButtonpatextwithlist: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtontextwithlist: () => $('button[class*="text-with-list"]'),
+  };
+
+  constructorBlocksblogposts = {
+    addBlockinButtonpablogposts: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonblogposts: () => $('button[class*="blog-posts"]:not([class*="blog-posts-cards"])'),
+  };
+
+  constructorBlockssteplist = {
+    addBlockinButtonpasteplist: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonsteplist: () => $('button[class*="step-list"]'),
+  };
 
   leftMenu = {
     pagesTabInLeftMenu: () => $('#menu-pages'),
