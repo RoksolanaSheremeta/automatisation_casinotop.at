@@ -11,6 +11,17 @@ class AdminDashboard {
     blockinlistButton: () => $('button[class*="faq"]:not([class*="yoast"])'),
   };
 
+  constructorBlocksmaintable = {
+    addBlockinButtonmaintable: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonmaintable: () => $('button[class*="blocks-main-table"]'),
+  };
+
+  constructorBlockspagehero = {
+    addBlockinButtonpagehero: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonpagehero: () => $('button[class*="blocks-page-hero"]:not([class*="page-hero-with-anchor"])'),
+  };
+
+
   leftMenu = {
     pagesTabInLeftMenu: () => $('#menu-pages'),
   };
