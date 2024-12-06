@@ -36,6 +36,32 @@ class AdminDashboard {
     blockinlistButtonreviewapplication: () => $('button[class*="review-application"]'),
   };
 
+  constructorBlocksaccordionblock = {
+    addBlockinButtonpaaccordionblock: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonaccordionblock: () => $('button[class*="accordion-block"]'),
+  };
+
+  constructorBlockscasinoreview = {
+    addBlockinButtonpacasinoreview: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtoncasinoreview: () => $('button[class*="casino-review"]'),
+  };
+
+  constructorBlockscasinobanner = {
+    addBlockinButtonpacasinobanner: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtoncasinobanner: () => $('button[class*="casino-banner"]'),
+  };
+
+  constructorBlocksproscons = {
+    addBlockinButtonpaproscons: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonproscons: () => $('button[class*="pros-cons"]'),
+  };
+
+  constructorBlocksslothero = {
+    addBlockinButtonpaslothero: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonslothero: () => $('button[class*="slot-hero"]'),
+  };
+
+
 
   leftMenu = {
     pagesTabInLeftMenu: () => $('#menu-pages'),
@@ -47,6 +73,10 @@ class AdminDashboard {
 
   leftMenuPost = {
     pagesTabInLeftMenuPost: () => $('#menu-posts'),
+  };
+
+  leftMenuSlot = {
+    pagesTabInLeftMenuSlot: () => $('#menu-posts-maranello-game'),
   };
 
   addNewPage = {
