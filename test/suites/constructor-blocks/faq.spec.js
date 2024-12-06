@@ -12,7 +12,7 @@ describe('Faq', () => {
     it('should open the homepage', async () => {
         await AdminDashboard.leftMenu.pagesTabInLeftMenu().click();
         await AdminDashboard.addNewPage.addNewButtoninPagesTab().click();
-        await AdminDashboard.editPostsPage.postTitle().setValue('Test page for maranello bloks');
+        await AdminDashboard.editPostsPage.postTitle().setValue('Test page for maranello bloks faq');
 
         await browser.keys('Enter');
         await browser.keys('/section');

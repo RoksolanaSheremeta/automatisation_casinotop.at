@@ -4,7 +4,7 @@ import { updatePageAndCheckMessage } from '../../models/admin.methods';
 
 /* global baseUrl*/
 
-describe('text with list', () => {
+describe('review application', () => {
     before('Pre-conditions', async() => {
         await loginToAdmin();
     });
@@ -12,18 +12,18 @@ describe('text with list', () => {
     it('should open the homepage', async () => {
         await AdminDashboard.leftMenu.pagesTabInLeftMenu().click();
         await AdminDashboard.addNewPage.addNewButtoninPagesTab().click();
-        await AdminDashboard.editPostsPage.postTitle().setValue('Test page for maranello bloks text with list');
+        await AdminDashboard.editPostsPage.postTitle().setValue('Test page for maranello bloks review application');
 
         await browser.keys('Enter');
         await browser.keys('/section');
         await browser.keys('Enter');
-        await AdminDashboard.constructorBlockstextwithlist.addBlockinButtonpatextwithlist().click();
-        await browser.keys('text-with-list');
+        await AdminDashboard.constructorBlocksreviewapplication.addBlockinButtonpareviewapplication().click();
+        await browser.keys('review-application');
         await browser.pause(2000);
 
-        await AdminDashboard.constructorBlockstextwithlist.blockinlistButtontextwithlist().scrollIntoView();
-        await AdminDashboard.constructorBlockstextwithlist.blockinlistButtontextwithlist().moveTo();
-        await AdminDashboard.constructorBlockstextwithlist.blockinlistButtontextwithlist().click();
+        await AdminDashboard.constructorBlocksreviewapplication.blockinlistButtonreviewapplication().scrollIntoView();
+        await AdminDashboard.constructorBlocksreviewapplication.blockinlistButtonreviewapplication().moveTo();
+        await AdminDashboard.constructorBlocksreviewapplication.blockinlistButtonreviewapplication().click();
         await updatePageAndCheckMessage();
     });
 }); 

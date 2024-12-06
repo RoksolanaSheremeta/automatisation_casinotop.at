@@ -31,6 +31,11 @@ class AdminDashboard {
     blockinlistButtonsteplist: () => $('button[class*="step-list"]'),
   };
 
+  constructorBlocksreviewapplication = {
+    addBlockinButtonpareviewapplication: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonreviewapplication: () => $('button[class*="review-application"]'),
+  };
+
 
   leftMenu = {
     pagesTabInLeftMenu: () => $('#menu-pages'),
@@ -38,6 +43,10 @@ class AdminDashboard {
 
   leftMenuCasino = {
     pagesTabInLeftMenuCasino: () => $('#menu-posts-maranello-casino'),
+  };
+
+  leftMenuPost = {
+    pagesTabInLeftMenuPost: () => $('#menu-posts'),
   };
 
   addNewPage = {

@@ -4,7 +4,7 @@ import { updatePageAndCheckMessage } from '../../models/admin.methods';
 
 /* global baseUrl*/
 
-describe('Faq', () => {
+describe('page hero with anchor', () => {
     before('Pre-conditions', async() => {
         await loginToAdmin();
     });

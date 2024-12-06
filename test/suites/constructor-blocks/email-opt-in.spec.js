@@ -4,7 +4,7 @@ import { updatePageAndCheckMessage } from '../../models/admin.methods';
 
 /* global baseUrl*/
 
-describe('Faq', () => {
+describe('email opt in', () => {
     before('Pre-conditions', async() => {
         await loginToAdmin();
     });

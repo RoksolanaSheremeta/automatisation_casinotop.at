@@ -4,7 +4,7 @@ import { updatePageAndCheckMessage } from '../../models/admin.methods';
 
 /* global baseUrl*/
 
-describe('Faq', () => {
+describe('casino page hero', () => {
     before('Pre-conditions', async() => {
         await loginToAdmin();
     });

@@ -4,18 +4,18 @@ import { updatePageAndCheckMessage } from '../../models/admin.methods';
 
 /* global baseUrl*/
 
-describe('page hero', () => {
+describe('blog hero', () => {
     before('Pre-conditions', async() => {
         await loginToAdmin();
     });
 
     it('should open the homepage', async () => {
-        await AdminDashboard.leftMenu.pagesTabInLeftMenu().click();
+        await AdminDashboard.leftMenuPost.pagesTabInLeftMenuPost().click();
         await AdminDashboard.addNewPage.addNewButtoninPagesTab().click();
-        await AdminDashboard.editPostsPage.postTitle().setValue('Test page for maranello bloks page hero');
+        await AdminDashboard.editPostsPage.postTitle().setValue('Test post for maranello bloks blog hero');
 
         await browser.keys('Enter');
-        await browser.keys('/page-hero');
+        await browser.keys('/blog-hero');
         await browser.keys('Enter');
         await browser.pause(2000);
 
