@@ -16,16 +16,6 @@ class AdminDashboard {
     blockinlistButtonmaintable: () => $('button[class*="blocks-main-table"]'),
   };
 
-  constructorBlockspagehero = {
-    addBlockinButtonpagehero: () => $("div[class='block-editor-block-list__layout']"),
-    blockinlistButtonpagehero: () => $('button[class*="blocks-page-hero"]:not([class*="page-hero-with-anchor"])'),
-  };
-
-  constructorBlockspageherowithanchor = {
-    addBlockinButtonpageherowithanchor: () => $("div[class='block-editor-block-list__layout']"),
-    blockinlistButtonpageherowithanchor: () => $('button[class*="page-hero-with-anchor"]'),
-  };
-
   constructorBlockstextwithlist = {
     addBlockinButtonpatextwithlist: () => $("div[class='block-editor-block-list__layout']"),
     blockinlistButtontextwithlist: () => $('button[class*="text-with-list"]'),
@@ -41,8 +31,13 @@ class AdminDashboard {
     blockinlistButtonsteplist: () => $('button[class*="step-list"]'),
   };
 
+
   leftMenu = {
     pagesTabInLeftMenu: () => $('#menu-pages'),
+  };
+
+  leftMenuCasino = {
+    pagesTabInLeftMenuCasino: () => $('#menu-posts-maranello-casino'),
   };
 
   addNewPage = {

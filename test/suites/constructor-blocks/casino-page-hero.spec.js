@@ -10,12 +10,12 @@ describe('Faq', () => {
     });
 
     it('should open the homepage', async () => {
-        await AdminDashboard.leftMenu.pagesTabInLeftMenu().click();
+        await AdminDashboard.leftMenuCasino.pagesTabInLeftMenuCasino().click();
         await AdminDashboard.addNewPage.addNewButtoninPagesTab().click();
-        await AdminDashboard.editPostsPage.postTitle().setValue('Test page for maranello bloks page hero with anchor');
+        await AdminDashboard.editPostsPage.postTitle().setValue('Test casino for maranello bloks casino page hero');
 
         await browser.keys('Enter');
-        await browser.keys('/page-hero-with-anchor');
+        await browser.keys('/casino-page-hero');
         await browser.keys('Enter');
         await browser.pause(2000);
 
