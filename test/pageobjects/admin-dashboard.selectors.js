@@ -61,6 +61,156 @@ class AdminDashboard {
     blockinlistButtonslothero: () => $('button[class*="slot-hero"]'),
   };
 
+  constructorBlockstitleandtext = {
+    addBlockinButtonpatitleandtext: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtontitleandtext: () => $('button[class*="title-and-text"]'),
+  };
+
+  constructorBlocksimageheading = {
+    addBlockinButtonpaimageheading: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonimageheading: () => $('button[class*="image-heading"]'),
+  };
+
+  constructorBlocksslottable = {
+    addBlockinButtonpaslottable: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonslottable: () => $('button[class*="slot-table"]'),
+  };
+
+  constructorBlocksstepscards = {
+    addBlockinButtonpastepscards: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonstepscards: () => $('button[class*="steps-cards"]'),
+  };
+
+  constructorBlocksauthorblock = {
+    addBlockinButtonpaauthorblock: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonauthorblock: () => $('button[class*="author-block"]'),
+  };
+
+  constructorBlockslinkingcards = {
+    addBlockinButtonpalinkingcards: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonlinkingcards: () => $('button[class*="linking-cards"]:not([class*="linking-cards-colored"])'),
+  };
+
+  constructorBlocksgamemaintable = {
+    addBlockinButtonpagamemaintable: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtongamemaintable: () => $('button[class*="game-main-table"]'),
+  };
+
+  constructorBlocksgamegallery = {
+    addBlockinButtonpagamegallery: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtongamegallery: () => $('button[class*="game-gallery"]'),
+  };
+
+  constructorBlocksgamestable = {
+    addBlockinButtonpagamestable: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtongamestable: () => $('button[class*="games-table"]'),
+  };
+
+  constructorBlockssiteslist = {
+    addBlockinButtonpasiteslist: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonsiteslist: () => $('button[class*="sites-list"]'),
+  };
+
+  constructorBlocksgametiles = {
+    addBlockinButtonpagametiles: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtongametiles: () => $('button[class*="game-tiles"]'),
+  };
+
+  constructorBlockslinkingcardscolored = {
+    addBlockinButtonpalinkingcardscolored: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonlinkingcardscolored: () => $('button[class*="linking-cards-colored"]'),
+  };
+
+  constructorBlocksblogpostscards = {
+    addBlockinButtonpablogpostscards: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonblogpostscards: () => $('button[class*="blog-posts-cards"]'),
+  };
+
+  constructorBlockspagesslider = {
+    addBlockinButtonpapagesslider: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonpagesslider: () => $('button[class*="pages-slider"]'),
+  };
+
+  constructorBlocksauthors = {
+    addBlockinButtonpaauthors: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonauthors: () => $('button[class*="authors"]'),
+  };
+
+  constructorBlockscardhalfimage = {
+    addBlockinButtonpacardhalfimage: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtoncardhalfimage: () => $('button[class*="card-half-image"]'),
+  };
+
+  constructorBlocksdontrecommendcasinos = {
+    addBlockinButtonpadontrecommendcasinos: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtondontrecommendcasinos: () => $('button[class*="dont-recommend-casinos"]'),
+  };
+
+  constructorBlocksquiz = {
+    addBlockinButtonpaquiz: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonquiz: () => $('button[class*="quiz"]'),
+  };
+
+  constructorBlockstip = {
+    addBlockinButtonpatip: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtontip: () => $('button[class*="tip"]'),
+  };
+
+  constructorBlocksemailgathering = {
+    addBlockinButtonpaemailgathering: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonemailgathering: () => $('button[class*="email-gathering"]'),
+  };
+
+  constructorBlocksmindeposit1euro = {
+    addBlockinButtonpamindeposit1euro: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonmindeposit1euro: () => $('button[class*="mindeposit-1-euro"]'),
+  };
+
+  constructorBlockspaymentscommon = {
+    addBlockinButtonpapaymentscommon: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonpaymentscommon: () => $('button[class*="payments-common"]'),
+  };
+
+  constructorBlocksadaptiveimages = {
+    addBlockinButtonpaadaptiveimages: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonadaptiveimages: () => $('button[class*="adaptive-images"]'),
+  };
+
+  constructorBlocksbestonlineslotcasinos = {
+    addBlockinButtonpabestonlineslotcasinos: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonbestonlineslotcasinos: () => $('button[class*="best-online-slot-casinos"]'),
+  };
+
+  constructorBlockscomparingbonusestable = {
+    addBlockinButtonpacomparingbonusestable: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtoncomparingbonusestable: () => $('button[class*="comparing-bonuses-table"]'),
+  };
+
+  constructorBlocksslotsslider = {
+    addBlockinButtonpaslotsslider: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonslotsslider: () => $('button[class*="slots-slider"]'),
+  };
+
+  constructorBlocksmobileapps = {
+    addBlockinButtonpamobileapps: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonmobileapps: () => $('button[class*="mobile-apps"]'),
+  };
+
+  constructorBlocksimageguide = {
+    addBlockinButtonpaimageguide: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonimageguide: () => $('button[class*="image-guide"]'),
+  };
+
+  constructorBlockscomparingtable = {
+    addBlockinButtonpacomparingtable: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtoncomparingtable: () => $('button[class*="comparing-table"]:not([class*="comparing-bonuses-table"]'),
+  };
+
+  constructorBlocksuserreviews = {
+    addBlockinButtonpauserreviews: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonuserreviews: () => $('button[class*="user-reviews"]'),
+  };
+
 
 
   leftMenu = {
@@ -78,6 +228,10 @@ class AdminDashboard {
   leftMenuSlot = {
     pagesTabInLeftMenuSlot: () => $('#menu-posts-maranello-game'),
   };
+
+  leftMenuSportsbook = {
+    pagesTabInLeftMenuSportsbook: () => $('#menu-posts-maranello-sportsbook'),
+  }
 
   addNewPage = {
     addNewButtoninPagesTab: () => $('.page-title-action'),
