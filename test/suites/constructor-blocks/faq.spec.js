@@ -35,16 +35,13 @@ describe('Faq', () => {
         await browser.pause(3000);
         await AdminDashboard.constructorBlocksfaq.answerInputField('The Maranello theme is a customizable WordPress theme designed for rich content blocks.');
 
-        // Оновлюємо сторінку та перевіряємо успішне повідомлення
         await updatePageAndCheckMessage();
         const successMessage = await $('.components-snackbar-list.components-editor-notices__snackbar');
         await browser.waitUntil(async () => await successMessage.isDisplayed(), {
             timeout: 20000,
             timeoutMsg: 'Success message не з\'явився після збереження сторінки'
         });
-
-        // Перезавантаження сторінки для перевірки збережених даних
-        await browser.refresh();
+        await browser.refresh(); 
         await browser.pause(2000);
     });
 }); 

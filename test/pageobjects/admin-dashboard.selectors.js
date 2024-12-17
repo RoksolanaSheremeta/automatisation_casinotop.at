@@ -12,32 +12,36 @@ class AdminDashboard {
     addBlockinButtonAddRow: () => $(".acf-button.acf-repeater-add-row.button.button-primary"),
     questionInputField: async (value) => {
       await browser.waitUntil(() => {
-        return browser.execute(() => tinyMCE.editors.length > 0);
+        return browser.execute(() => {
+          const editor = tinyMCE.editors.find(ed => ed.id && ed.id.includes('acf-editor'));
+          return editor !== undefined; // Перевірка на наявність редактора
+        });
       }, {
-        timeout: 5000,
+        timeout: 15000, 
         timeoutMsg: 'TinyMCE для питання не завантажився вчасно',
       });
-
+    
       await browser.execute((text) => {
-        const editor = tinyMCE.editors.find(ed => ed.id.includes('acf-editor'));
+        const editor = tinyMCE.editors.find(ed => ed.id && ed.id.includes('acf-editor'));
         if (editor) editor.setContent(text);
       }, value);
     },
 
     answerInputField: async (value) => {
       await browser.waitUntil(() => {
-        return browser.execute(() => typeof tinyMCE !== 'undefined' && tinyMCE.editors.length > 0);
+        return browser.execute(() => tinyMCE.editors.length > 0);
       }, {
-        timeout: 10000, 
+        timeout: 10000,
         timeoutMsg: 'TinyMCE для відповіді не завантажився вчасно',
       });
-
+  
       await browser.execute((text) => {
-        const editor = tinyMCE.editors.find(ed => ed.id.includes('acf-editor-70')); 
+        const editor = tinyMCE.editors.find(ed => ed.id && ed.id.includes('acf-editor-70'));
         if (editor) editor.setContent(text);
       }, value);
     },
     
+    // Ініціалізація TinyMCE
     initTinyMCE: async () => {
       await browser.waitUntil(() => {
         return browser.execute(() => typeof tinyMCE !== 'undefined' && tinyMCE.editors.length > 0);
