@@ -17,7 +17,7 @@ class AdminDashboard {
         timeout: 5000,
         timeoutMsg: 'TinyMCE для питання не завантажився вчасно',
       });
-  
+
       await browser.execute((text) => {
         const editor = tinyMCE.editors.find(ed => ed.id.includes('acf-editor'));
         if (editor) editor.setContent(text);
@@ -28,12 +28,12 @@ class AdminDashboard {
       await browser.waitUntil(() => {
         return browser.execute(() => typeof tinyMCE !== 'undefined' && tinyMCE.editors.length > 0);
       }, {
-        timeout: 10000,  // Збільшено до 10 секунд для надійності
+        timeout: 10000, 
         timeoutMsg: 'TinyMCE для відповіді не завантажився вчасно',
       });
-  
+
       await browser.execute((text) => {
-        const editor = tinyMCE.editors.find(ed => ed.id.includes('acf-editor-70')); // Використовуємо правильний ID для відповіді
+        const editor = tinyMCE.editors.find(ed => ed.id.includes('acf-editor-70')); 
         if (editor) editor.setContent(text);
       }, value);
     },
@@ -42,7 +42,7 @@ class AdminDashboard {
       await browser.waitUntil(() => {
         return browser.execute(() => typeof tinyMCE !== 'undefined' && tinyMCE.editors.length > 0);
       }, {
-        timeout: 10000,  // Збільшено до 10 секунд
+        timeout: 10000, 
         timeoutMsg: 'TinyMCE не завантажився вчасно',
       });
       console.log('TinyMCE завантажився');
