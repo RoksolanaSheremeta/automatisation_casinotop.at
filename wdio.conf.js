@@ -31,6 +31,11 @@ exports.config = {
     exclude: [
         // 'path/to/excluded/files'
     ],
+
+    windowSize: {
+        width: 1440,
+        height: 900
+      },
     //
     // ============
     // Capabilities

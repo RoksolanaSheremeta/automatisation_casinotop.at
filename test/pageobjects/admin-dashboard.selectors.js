@@ -6,9 +6,47 @@ class AdminDashboard {
     errorPopup: () => $('#login_error'),
     theEmailIsCorrectButton: () => $('#correct-admin-email'),
   };
-  constructorBlocks = {
-    addBlockinButton: () => $("div[class='block-editor-block-list__layout']"),
-    blockinlistButton: () => $('button[class*="faq"]:not([class*="yoast"])'),
+  constructorBlocksfaq = {
+    addBlockinButtonfaq: () => $("div[class='block-editor-block-list__layout']"),
+    blockinlistButtonfaq: () => $('button[class*="faq"]:not([class*="yoast"])'),
+    addBlockinButtonAddRow: () => $(".acf-button.acf-repeater-add-row.button.button-primary"),
+    questionInputField: async (value) => {
+      await browser.waitUntil(() => {
+        return browser.execute(() => tinyMCE.editors.length > 0);
+      }, {
+        timeout: 5000,
+        timeoutMsg: 'TinyMCE для питання не завантажився вчасно',
+      });
+  
+      await browser.execute((text) => {
+        const editor = tinyMCE.editors.find(ed => ed.id.includes('acf-editor'));
+        if (editor) editor.setContent(text);
+      }, value);
+    },
+
+    answerInputField: async (value) => {
+      await browser.waitUntil(() => {
+        return browser.execute(() => typeof tinyMCE !== 'undefined' && tinyMCE.editors.length > 0);
+      }, {
+        timeout: 10000,  // Збільшено до 10 секунд для надійності
+        timeoutMsg: 'TinyMCE для відповіді не завантажився вчасно',
+      });
+  
+      await browser.execute((text) => {
+        const editor = tinyMCE.editors.find(ed => ed.id.includes('acf-editor-70')); // Використовуємо правильний ID для відповіді
+        if (editor) editor.setContent(text);
+      }, value);
+    },
+    
+    initTinyMCE: async () => {
+      await browser.waitUntil(() => {
+        return browser.execute(() => typeof tinyMCE !== 'undefined' && tinyMCE.editors.length > 0);
+      }, {
+        timeout: 10000,  // Збільшено до 10 секунд
+        timeoutMsg: 'TinyMCE не завантажився вчасно',
+      });
+      console.log('TinyMCE завантажився');
+    },
   };
 
   constructorBlocksmaintable = {

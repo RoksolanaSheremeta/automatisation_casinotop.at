@@ -17,13 +17,24 @@ describe('Faq', () => {
         await browser.keys('Enter');
         await browser.keys('/section');
         await browser.keys('Enter');
-        await AdminDashboard.constructorBlocks.addBlockinButton().click();
+        await AdminDashboard.constructorBlocksfaq.addBlockinButtonfaq().click();
         await browser.keys('faq');
         await browser.pause(2000);
 
-        await AdminDashboard.constructorBlocks.blockinlistButton().scrollIntoView();
-        await AdminDashboard.constructorBlocks.blockinlistButton().moveTo();
-        await AdminDashboard.constructorBlocks.blockinlistButton().click();
+        await AdminDashboard.constructorBlocksfaq.blockinlistButtonfaq().scrollIntoView();
+        await AdminDashboard.constructorBlocksfaq.blockinlistButtonfaq().moveTo();
+        await AdminDashboard.constructorBlocksfaq.blockinlistButtonfaq().click();
+        await AdminDashboard.constructorBlocksfaq.addBlockinButtonAddRow().click();
+        await browser.pause(5000);
+        
+        // Ініціалізуємо TinyMCE
+        await AdminDashboard.constructorBlocksfaq.initTinyMCE();
+
+        // Вводимо питання та відповідь
+        await AdminDashboard.constructorBlocksfaq.questionInputField('What is the Maranello theme?');
+        await browser.pause(3000);
+        await AdminDashboard.constructorBlocksfaq.answerInputField('The Maranello theme is a customizable WordPress theme designed for rich content blocks.');
+
         await updatePageAndCheckMessage();
     });
 }); 
